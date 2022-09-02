@@ -1,4 +1,4 @@
-import 'package:adf_cuidapet/app/home_page.dart';
+import 'package:adf_cuidapet/app/modules/auth/auth_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends Module {
@@ -7,6 +7,6 @@ class AppModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (_, __) => const HomePage()),
+        ModuleRoute('/auth', module: AuthModule()),
       ];
 }
