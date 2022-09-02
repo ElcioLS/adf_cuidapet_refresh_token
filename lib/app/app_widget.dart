@@ -1,3 +1,4 @@
+import 'package:adf_cuidapet/app/core/ui/ui_config.dart';
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -14,12 +15,12 @@ class AppWidget extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(390, 844),
       builder: (_, __) => MaterialApp.router(
-        title: 'Cuidapet',
+        title: UiConfig.title,
         debugShowCheckedModeBanner: false,
         builder: (context, child) {
           return Asuka.builder(context, child);
         },
-        theme: ThemeData(primarySwatch: Colors.blue),
+        theme: UiConfig.theme,
         routeInformationParser: Modular.routeInformationParser,
         routerDelegate: Modular.routerDelegate,
       ),
