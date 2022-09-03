@@ -1,3 +1,4 @@
+import 'package:adf_cuidapet/app/core/ui/icons/cuidapeticons_icons.dart';
 import 'package:adf_cuidapet/app/core/ui/widgets/cuidapet_text_form_field.dart';
 import 'package:flutter/material.dart';
 
@@ -31,11 +32,14 @@ class LoginPage extends StatelessWidget {
               ),
               Text(testeEC.text),
               ElevatedButton(
-                  onPressed: () {
-                    formKey.currentState?.validate();
-                    print(testeEC.text);
-                  },
-                  child: const Text('Validar')),
+                onPressed: () {
+                  formKey.currentState?.validate();
+                  print(testeEC.text);
+                },
+                child: const Text('Validar'),
+              ),
+              const Icon(Cuidapeticons.facebook),
+              const Icon(Cuidapeticons.google),
             ],
           ),
         ),
