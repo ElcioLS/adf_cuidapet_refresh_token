@@ -43,10 +43,7 @@ class LoginPage extends StatelessWidget {
               const Icon(Cuidapeticons.facebook),
               const Icon(Cuidapeticons.google),
               RoundedButtonWithIcon(
-                onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Clicou no Facebook')));
-                },
+                onTap: () {},
                 width: 200,
                 color: Colors.indigo,
                 icon: Cuidapeticons.facebook,
@@ -60,16 +57,8 @@ class LoginPage extends StatelessWidget {
                 label: 'google',
               ),
               CuidapetDefaultButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('clicou'),
-                    ),
-                  );
-                },
+                onPressed: () {},
                 label: 'Entrar',
-                width: 200,
-                height: 200,
               ),
             ],
           ),

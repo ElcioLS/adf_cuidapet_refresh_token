@@ -22,7 +22,7 @@ class CuidapetDefaultButton extends StatelessWidget {
     this.labelSize = 20,
     this.padding = 10,
     this.width = double.infinity,
-    this.height = double.infinity,
+    this.height = 66,
   }) : super(key: key);
 
   @override
