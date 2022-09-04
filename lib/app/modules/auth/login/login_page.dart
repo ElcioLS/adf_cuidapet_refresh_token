@@ -1,5 +1,6 @@
 import 'package:adf_cuidapet/app/core/ui/icons/cuidapeticons_icons.dart';
 import 'package:adf_cuidapet/app/core/ui/widgets/cuidapet_text_form_field.dart';
+import 'package:adf_cuidapet/app/core/ui/widgets/rounded_button_with_icon.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -40,6 +41,23 @@ class LoginPage extends StatelessWidget {
               ),
               const Icon(Cuidapeticons.facebook),
               const Icon(Cuidapeticons.google),
+              RoundedButtonWithIcon(
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Clicou no Facebook')));
+                },
+                width: 200,
+                color: Colors.indigo,
+                icon: Cuidapeticons.facebook,
+                label: 'facebook',
+              ),
+              RoundedButtonWithIcon(
+                onTap: () {},
+                width: 200,
+                color: Colors.orange,
+                icon: Cuidapeticons.google,
+                label: 'google',
+              ),
             ],
           ),
         ),
