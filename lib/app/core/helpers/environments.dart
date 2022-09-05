@@ -6,7 +6,7 @@ class Environments {
   Environments._();
 
   static String? param(String paramName) {
-    if (!kReleaseMode) {
+    if (kReleaseMode) {
       return FirebaseRemoteConfig.instance.getString(paramName);
     } else {
       return dotenv.env[paramName];
@@ -14,19 +14,17 @@ class Environments {
   }
 
   static Future<void> loadEnvs() async {
-    if (!kReleaseMode) {
+    if (kReleaseMode) {
       final remoteConfig = FirebaseRemoteConfig.instance;
 
       await remoteConfig.setConfigSettings(
         RemoteConfigSettings(
           fetchTimeout: const Duration(minutes: 1),
-          minimumFetchInterval: const Duration(seconds: 10),
+          minimumFetchInterval: const Duration(hours: 1),
         ),
       );
 
       await remoteConfig.fetchAndActivate();
-
-      // await remoteConfig.fetchAndActivate();
     } else {
       await dotenv.load(fileName: ".env");
     }

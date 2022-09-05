@@ -1,4 +1,3 @@
-import 'package:adf_cuidapet/app/core/helpers/environments.dart';
 import 'package:adf_cuidapet/app/core/ui/extensions/size_screen_extension.dart';
 import 'package:adf_cuidapet/app/core/ui/extensions/theme_extension.dart';
 import 'package:adf_cuidapet/app/core/ui/icons/cuidapeticons_icons.dart';
@@ -15,16 +14,12 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = Environments.param('base_url');
-    print(url);
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text(url ?? ''),
               SizedBox(height: 50.h),
               Center(
                 child: Image.asset(
