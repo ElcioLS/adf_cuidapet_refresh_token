@@ -49,6 +49,7 @@ dependencies:
   
   # flutter_dotenv: 5.0.2
   flutter_dotenv: 
+  logger: ^1.1.0
 
 
 
