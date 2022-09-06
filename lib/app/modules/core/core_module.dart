@@ -1,3 +1,5 @@
+import 'package:adf_cuidapet/app/core/local_storage/local_storage.dart';
+import 'package:adf_cuidapet/app/core/local_storage/shared_preferences/shared_preferences_local_storage_impl.dart';
 import 'package:adf_cuidapet/app/core/logger/app_logger.dart';
 import 'package:adf_cuidapet/app/core/logger/logger_app_logger_impl.dart';
 import 'package:adf_cuidapet/app/core/rest_client/dio/dio_rest_client.dart';
@@ -11,5 +13,7 @@ class CoreModule extends Module {
     Bind.lazySingleton((i) => AuthStore(), export: true),
     Bind.lazySingleton<RestClient>((i) => DioRestClient(), export: true),
     Bind.lazySingleton<AppLogger>((i) => LoggerAppLoggerImpl(), export: true),
+    Bind.lazySingleton<LocalStorage>((i) => SharedPreferencesLocalStorageImpl(),
+        export: true),
   ];
 }

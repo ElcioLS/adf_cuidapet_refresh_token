@@ -1,4 +1,3 @@
-import 'package:adf_cuidapet/app/core/logger/app_logger.dart';
 import 'package:adf_cuidapet/app/core/ui/extensions/size_screen_extension.dart';
 import 'package:adf_cuidapet/app/core/ui/extensions/theme_extension.dart';
 import 'package:adf_cuidapet/app/core/ui/icons/cuidapeticons_icons.dart';
@@ -6,7 +5,6 @@ import 'package:adf_cuidapet/app/core/ui/widgets/cuidapet_default_button.dart';
 import 'package:adf_cuidapet/app/core/ui/widgets/cuidapet_text_form_field.dart';
 import 'package:adf_cuidapet/app/core/ui/widgets/rounded_button_with_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 part 'widgets/login_form.dart';
 part 'widgets/login_register_buttons.dart';
@@ -16,15 +14,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var log = Modular.get<AppLogger>();
-
-    // log.error('Error X', 'Errox', StackTrace.current);
-    log.append('Mensagem1');
-    log.append('Mensagem2');
-    log.append('Mensagem3');
-    log.append('Mensagem4');
-    log.closeAppend();
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
