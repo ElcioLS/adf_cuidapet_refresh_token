@@ -7,17 +7,51 @@ class _LoginForm extends StatefulWidget {
   State<_LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<_LoginForm> {
+class _LoginFormState extends ModularState<_LoginForm, LoginController> {
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+    final loginEC = TextEditingController();
+    final passwordEC = TextEditingController();
+
+    @override
+    void dispose() {
+      loginEC.dispose();
+      passwordEC.dispose();
+      super.dispose();
+    }
+
     return Form(
+      key: formKey,
       child: Column(
         children: [
-          CuidapetTextFormField(label: 'Login'),
+          CuidapetTextFormField(
+            label: 'Login',
+            controller: loginEC,
+            validator: Validatorless.multiple([
+              Validatorless.required('Login obrigatório'),
+              Validatorless.email('E-mail inválido'),
+            ]),
+          ),
           const SizedBox(height: 20),
-          CuidapetTextFormField(label: 'Senha', obscureText: true),
+          CuidapetTextFormField(
+            label: 'Senha',
+            obscureText: true,
+            controller: passwordEC,
+            validator: Validatorless.multiple([
+              Validatorless.required('Senha obgrigatória'),
+              Validatorless.min(5, 'A senha deve conter ao menos 6 caracteres')
+            ]),
+          ),
           const SizedBox(height: 20),
-          CuidapetDefaultButton(label: 'Entrar', onPressed: () {})
+          CuidapetDefaultButton(
+              label: 'Entrar',
+              onPressed: () async {
+                final formValid = formKey.currentState?.validate() ?? false;
+                if (formValid) {
+                  await controller.login(loginEC.text, passwordEC.text);
+                }
+              })
         ],
       ),
     );
