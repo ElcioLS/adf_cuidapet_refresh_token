@@ -1,6 +1,8 @@
 import 'package:adf_cuidapet/app/core/exceptions/failure.dart';
 import 'package:adf_cuidapet/app/core/exceptions/user_exists_exception.dart';
 import 'package:adf_cuidapet/app/core/exceptions/user_not_exists_exception.dart';
+import 'package:adf_cuidapet/app/core/helpers/constants.dart';
+import 'package:adf_cuidapet/app/core/local_storage/local_storage.dart';
 import 'package:adf_cuidapet/app/core/logger/app_logger.dart';
 import 'package:adf_cuidapet/app/repositories/user/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,12 +12,15 @@ import './user_service.dart';
 class UserServiceImpl implements UserService {
   final UserRepository _userRepository;
   final AppLogger _log;
+  final LocalStorage _localStorage;
 
   UserServiceImpl({
     required UserRepository userRepository,
     required AppLogger log,
+    required LocalStorage localStorage,
   })  : _userRepository = userRepository,
-        _log = log;
+        _log = log,
+        _localStorage = localStorage;
 
   @override
   Future<void> register(String email, String password) async {
@@ -60,6 +65,11 @@ class UserServiceImpl implements UserService {
               message:
                   'E-mail não confirmado. Favor, verifique sua caxa de entrada ou spam e confirme');
         }
+        final accessToken = await _userRepository.login(email, password);
+        await _saveAccessToken(accessToken);
+        final xx = await _localStorage
+            .read<String>(Constants.LOCAL_STORAGE_ACCESS_TOKEN_KEY);
+        print(xx);
       } else {
         throw Failure(
             message:
@@ -71,4 +81,7 @@ class UserServiceImpl implements UserService {
       throw Failure(message: 'Usuário ou senha inválidos!');
     }
   }
+
+  Future<void> _saveAccessToken(String accessToken) => _localStorage.write(
+      Constants.LOCAL_STORAGE_ACCESS_TOKEN_KEY, accessToken);
 }
