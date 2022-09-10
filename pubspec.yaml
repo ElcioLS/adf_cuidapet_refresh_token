@@ -32,26 +32,29 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  # flutter_modular: ^4.5.1+1
-  flutter_modular: ^5.0.3
+  # flutter_modular: 4.5.1+1
+  # flutter_modular: 4.5.1
+  flutter_modular:
   mobx: ^2.0.6+1
   flutter_mobx: ^2.0.4
   asuka: ^2.0.0+1
   dio: ^4.0.6
-  # flutter_screenutil: ^5.4.0+1
-  flutter_screenutil: ^5.3.3
-  firebase_core: 
+  flutter_screenutil: ^5.4.0+1
+  # flutter_screenutil: ^5.3.3
+  firebase_core: ^1.14.1
   # firebase_core: 1.14.1
-  firebase_analytics: 
   # firebase_analytics: 9.1.8
-  firebase_remote_config: 2.0.4
-  firebase_auth: ^3.3.14
-  # firebase_remote_config: 
-  # flutter_dotenv: 5.0.2
-  flutter_dotenv: 
+  # firebase_remote_config: 2.0.4
+  # firebase_auth: 3.3.14
+  # firebase_analytics: 
+  firebase_auth: 
+  firebase_remote_config: 
+  flutter_dotenv: 5.0.2
+  # flutter_dotenv:
   logger: ^1.1.0
 
-  flutter_secure_storage: ^5.0.2
+  flutter_secure_storage: 5.0.2
+  # flutter_secure_storage: ^5.0.2
   shared_preferences: ^2.0.13
   validatorless: ^1.2.1
 
