@@ -25,7 +25,7 @@ class _AuthHomePageState extends State<AuthHomePage> {
       if (userLogger != null && userLogger.email.isNotEmpty) {
         Modular.to.navigate('/home');
       } else {
-        Modular.to.navigate('/auth/login');
+        Modular.to.navigate('/auth/login/');
       }
     });
 
