@@ -4,6 +4,7 @@ import 'package:adf_cuidapet/app/core/exceptions/user_not_exists_exception.dart'
 import 'package:adf_cuidapet/app/core/logger/app_logger.dart';
 import 'package:adf_cuidapet/app/core/ui/widgets/loader.dart';
 import 'package:adf_cuidapet/app/core/ui/widgets/messages.dart';
+import 'package:adf_cuidapet/app/models/social_login_type.dart';
 import 'package:adf_cuidapet/app/services/user/user_service.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
@@ -38,6 +39,18 @@ abstract class LoginControllerBase with Store {
       _log.error(errorMessage);
       Loader.hide();
       Messages.alert(errorMessage);
+    }
+  }
+
+  Future<void> socialLogin(SocialLoginType socialLoginType) async {
+    try {
+      Loader.show();
+      await _userService.socialLogin(socialLoginType);
+      Loader.hide();
+    } on Failure catch (e, s) {
+      Loader.hide();
+      _log.error('Erro ao realizar login', e, s);
+      Messages.alert(e.message ?? 'Erro ao realizar login');
     }
   }
 }
