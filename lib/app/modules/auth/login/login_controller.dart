@@ -5,6 +5,7 @@ import 'package:adf_cuidapet/app/core/logger/app_logger.dart';
 import 'package:adf_cuidapet/app/core/ui/widgets/loader.dart';
 import 'package:adf_cuidapet/app/core/ui/widgets/messages.dart';
 import 'package:adf_cuidapet/app/services/user/user_service.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 part 'login_controller.g.dart';
@@ -26,6 +27,7 @@ abstract class LoginControllerBase with Store {
       Loader.show();
       await _userService.login(login, password);
       Loader.hide();
+      Modular.to.navigate('/auth/');
     } on Failure catch (e) {
       final errorMessage = e.message ?? 'Erro ao relizar login';
       _log.error(errorMessage);
