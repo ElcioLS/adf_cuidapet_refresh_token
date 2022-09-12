@@ -115,8 +115,11 @@ class UserServiceImpl implements UserService {
 
       switch (socialLoginType) {
         case SocialLoginType.facebook:
-          throw Failure(message: 'Face not implemented');
-        // break;
+          socialModel = await _socialRepository.facebookLogin();
+          authCredencial =
+              FacebookAuthProvider.credential(socialModel.accessToken);
+          break;
+
         case SocialLoginType.google:
           socialModel = await _socialRepository.googleLogin();
           authCredencial = GoogleAuthProvider.credential(
