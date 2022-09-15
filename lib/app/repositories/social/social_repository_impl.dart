@@ -37,9 +37,11 @@ class SocialRepositoryImpl implements SocialRepository {
     if (await googleSignIn.isSignedIn()) {
       await googleSignIn.disconnect();
     }
-
+    print('login conectado');
     final googleUser = await googleSignIn.signIn();
     final googleAuth = await googleUser?.authentication;
+
+    print('$googleAuth' '!!! --NÃO TÁ DANDO CERTO AQUI--!!!');
 
     if (googleAuth != null && googleUser != null) {
       return SocialNetworkModel(

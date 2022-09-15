@@ -1,5 +1,4 @@
 import 'package:adf_cuidapet/app/core/helpers/environments.dart';
-import 'package:adf_cuidapet/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +11,8 @@ class ApplicationConfig {
 
   Future<void> _firebaseCoreConfig() async {
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+        // options: DefaultFirebaseOptions.currentPlatform,
+        );
   }
 
   Future<void> _loadEnvs() => Environments.loadEnvs();
