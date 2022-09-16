@@ -32,7 +32,10 @@ class DioRestClient implements RestClient {
   }) {
     _dio = Dio(baseOptions ?? _defaultOptions);
     _dio.interceptors.addAll([
-      AuthInterceptor(localStorage: localStorage, authStore: authStore),
+      AuthInterceptor(
+        localStorage: localStorage,
+        authStore: authStore,
+      ),
       AuthRefreshTokenInterceptor(
         authStore: authStore,
         localStorage: localStorage,

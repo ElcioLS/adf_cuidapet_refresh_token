@@ -85,7 +85,7 @@ class AuthRefreshTokenInterceptor extends Interceptor {
 
   Future<void> _retryRequest(
       DioError err, ErrorInterceptorHandler handler) async {
-    _log.info('######## Retry Request (${err.requestOptions.path})########');
+    _log.info('######### Retry Request (${err.requestOptions.path})#########');
 
     final requestOptions = err.requestOptions;
 

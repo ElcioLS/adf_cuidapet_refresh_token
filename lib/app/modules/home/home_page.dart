@@ -22,8 +22,10 @@ class HomePage extends StatelessWidget {
           ),
           TextButton(
             onPressed: () async {
-              final categoriesResponse =
-                  await Modular.get<RestClient>().auth().get('/categories/');
+              final categoriesResponse = await Modular.get<RestClient>()
+                  .auth()
+                  .get('/categories/'); //teste acessar categorias
+
               print(categoriesResponse.data);
             },
             child: Center(child: Text('Teste Refresh Token')),
